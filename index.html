@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autel de Prière — Prière, Enseignements Bibliques et Prophétie</title>
+  <meta name="description" content="Canal de prière, enseignements bibliques profonds et prophéties. Rejoignez la communauté de l'Autel de Prière.">
+  <meta property="og:title" content="Autel de Prière">
+  <meta property="og:description" content="Prière · Enseignements Bibliques · Prophétie">
+  <meta property="og:type" content="website">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9452279158712237" crossorigin="anonymous"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       RESET & VARIABLES
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:       #D4AF37;
+      --gold-light: #F0D060;
+      --gold-dark:  #A88B20;
+      --bg-dark:    #090909;
+      --bg-card:    #111111;
+      --bg-light:   #1a1a1a;
+      --text:       #e8e8e8;
+      --text-muted: #888;
+      --border:     rgba(212,175,55,0.2);
+      --radius:     10px;
+      --shadow:     0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       SCROLLBAR
+    ============================================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(9,9,9,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-cross {
+      font-size: 1.6rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .nav-logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: #000 !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 20px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: #000 !important; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--gold); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 2rem 2rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, rgba(212,175,55,0.08) 0%, transparent 70%),
+                  linear-gradient(180deg, #090909 0%, #0d0d0d 100%);
+    }
+    /* Particles canvas */
+    #particles { position: absolute; inset: 0; pointer-events: none; }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      max-width: 820px;
+    }
+
+    /* FIX: All hero elements are VISIBLE by default.
+       Animations are decorative only (transform, not opacity) */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold);
+      padding: 0.4rem 1.1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-cross-ornament {
+      font-size: 3rem;
+      color: var(--gold);
+      margin: 0 auto 1.2rem;
+      display: block;
+      line-height: 1;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .hero-title .gold { color: var(--gold); }
+
+    .hero-subtitle-line {
+      width: 60px; height: 2px;
+      background: var(--gold);
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: #bbb;
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex; justify-content: center; gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,175,55,0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-outline:hover { background: rgba(212,175,55,0.1); transform: translateY(-2px); }
+
+    /* Stats */
+    .hero-stats {
+      display: flex; justify-content: center; gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .scroll-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold);
+      animation: scrollBounce 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%,100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(8px); opacity: 0.4; }
+    }
+
+    /* ============================================================
+       AD UNIT
+    ============================================================ */
+    .ad-unit {
+      max-width: 900px; margin: 0 auto;
+      padding: 1rem 2rem;
+      text-align: center;
+      min-height: 90px;
+    }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    section { padding: 5rem 2rem; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .section-divider {
+      width: 50px; height: 2px;
+      background: var(--gold);
+      margin: 1rem 0 1.5rem;
+      border-radius: 2px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ============================================================
+       VIDEOS SECTION
+    ============================================================ */
+    #videos { background: var(--bg-dark); }
+    .section-header { margin-bottom: 2.5rem; }
+
+    .filter-tabs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .filter-btn {
+      padding: 0.4rem 1.1rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      border-color: rgba(212,175,55,0.5);
+    }
+    .video-thumb {
+      position: relative;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .video-thumb img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .video-card:hover .video-thumb img { transform: scale(1.05); }
+    .video-play-btn {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .video-card:hover .video-play-btn { opacity: 1; }
+    .play-circle {
+      width: 52px; height: 52px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .video-duration {
+      position: absolute; bottom: 8px; right: 8px;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .video-category-badge {
+      position: absolute; top: 8px; left: 8px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .cat-priere    { background: rgba(212,175,55,0.9); color: #000; }
+    .cat-prophetie { background: rgba(180,100,220,0.9); color: #fff; }
+    .cat-enseignement { background: rgba(60,160,220,0.9); color: #fff; }
+
+    .video-info { padding: 1rem; }
+    .video-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .video-meta {
+      display: flex; justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Loading skeleton */
+    .video-skeleton {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .skeleton-thumb {
+      padding-bottom: 56.25%;
+      background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    .skeleton-info { padding: 1rem; }
+    .skeleton-line {
+      height: 12px; border-radius: 6px;
+      background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      margin-bottom: 0.7rem;
+    }
+    .skeleton-line:last-child { width: 60%; }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .load-more-wrap { text-align: center; margin-top: 2.5rem; }
+
+    /* ============================================================
+       SERMON SECTION
+    ============================================================ */
+    #sermons {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .sermons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .sermon-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .sermon-card:hover {
+      border-color: rgba(212,175,55,0.5);
+      transform: translateY(-3px);
+    }
+    .sermon-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .sermon-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .sermon-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       MISSION SECTION
+    ============================================================ */
+    #mission { background: var(--bg-dark); }
+    .mission-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mission-inner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .mission-quote {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: var(--gold);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+    .mission-verse {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       MODAL
+    ============================================================ */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      width: 100%;
+      max-width: 800px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 12px; right: 14px; z-index: 10;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-close:hover { background: var(--gold); color: #000; }
+    .modal-iframe-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+    }
+    .modal-iframe-wrap iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .modal-info { padding: 1.2rem 1.5rem; }
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .modal-meta { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: #050505;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1.5rem; text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: #444;
+    }
+
+    /* ============================================================
+       COOKIE BANNER
+    ============================================================ */
+    .cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 3000;
+      background: #111;
+      border-top: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .cookie-banner.hidden { display: none; }
+    .cookie-text { font-size: 0.85rem; color: var(--text-muted); flex: 1; min-width: 200px; }
+    .cookie-text a { color: var(--gold); text-decoration: underline; cursor: pointer; }
+    .cookie-btn {
+      padding: 0.45rem 1.3rem;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .cookie-accept { background: var(--gold); color: #000; }
+    .cookie-reject { background: transparent; border: 1px solid #444 !important; color: var(--text-muted); }
+
+    /* ============================================================
+       PRIVACY MODAL
+    ============================================================ */
+    .privacy-modal {
+      position: fixed; inset: 0; z-index: 4000;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .privacy-modal.open { display: flex; }
+    .privacy-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+    .privacy-box h2 { font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 1rem; }
+    .privacy-box h3 { color: var(--gold-light); margin: 1.2rem 0 0.5rem; font-size: 1rem; }
+    .privacy-box p, .privacy-box li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+    .privacy-box ul { padding-left: 1.2rem; }
+    .privacy-close-btn {
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        position: fixed; top: 64px; left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(9,9,9,0.98);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border);
+        z-index: 999;
+        gap: 1rem;
+      }
+      .nav-hamburger { display: flex; }
+      .hero-stats { gap: 1.5rem; }
+      .mission-inner { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================== NAV ================== -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <span class="nav-cross">✝</span>
+      <span class="nav-logo-text">Autel de Prière</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#videos">Vidéos</a></li>
+      <li><a href="#sermons">Thèmes</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li>
+        <a href="https://www.youtube.com/channel/UC7iMNhxC_LV6hUlZhu3qFQw?sub_confirmation=1"
+           target="_blank" rel="noopener" class="nav-cta">
+          ▶ S'abonner
+        </a>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ================== HERO ================== -->
+  <section class="hero" id="accueil">
+    <div class="hero-bg"></div>
+    <canvas id="particles"></canvas>
+
+    <div class="hero-content">
+      <span class="hero-badge">✦ Canal Officiel YouTube ✦</span>
+      <div class="hero-cross-ornament">✝</div>
+      <h1 class="hero-title">
+        Autel de<br><span class="gold">Prière</span>
+      </h1>
+      <div class="hero-subtitle-line"></div>
+      <p class="hero-subtitle">Prière · Enseignements Bibliques · Prophétie</p>
+      <p class="hero-desc">
+        Un espace consacré à la prière profonde, aux révélations bibliques
+        et aux messages prophétiques pour votre édification spirituelle.
+      </p>
+      <div class="hero-btns">
+        <a href="#videos" class="btn btn-gold">▶ Voir les Vidéos</a>
+        <a href="https://www.youtube.com/channel/UC7iMNhxC_LV6hUlZhu3qFQw?sub_confirmation=1"
+           target="_blank" rel="noopener" class="btn btn-outline">
+          ✦ S'abonner
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num" id="statSubs">…</span>
+          <span class="stat-label">Abonnés</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="statVids">…</span>
+          <span class="stat-label">Vidéos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="statViews">…</span>
+          <span class="stat-label">Vues</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Défiler</span>
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ================== AD #1 ================== -->
+  <div class="ad-unit">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9452279158712237"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ================== VIDEOS ================== -->
+  <section id="videos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">✦ Dernières Publications</span>
+        <h2 class="section-title">Vidéos Récentes</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Retrouvez nos dernières prières, enseignements et prophéties.</p>
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-btn active" data-cat="all">Tout voir</button>
+          <button class="filter-btn" data-cat="priere">🙏 Prière</button>
+          <button class="filter-btn" data-cat="enseignement">📖 Enseignement</button>
+          <button class="filter-btn" data-cat="prophetie">✨ Prophétie</button>
+        </div>
+      </div>
+      <div class="videos-grid" id="videosGrid">
+        <!-- Skeletons affichés pendant le chargement -->
+        <div class="video-skeleton"><div class="skeleton-thumb"></div><div class="skeleton-info"><div class="skeleton-line"></div><div class="skeleton-line"></div></div></div>
+        <div class="video-skeleton"><div class="skeleton-thumb"></div><div class="skeleton-info"><div class="skeleton-line"></div><div class="skeleton-line"></div></div></div>
+        <div class="video-skeleton"><div class="skeleton-thumb"></div><div class="skeleton-info"><div class="skeleton-line"></div><div class="skeleton-line"></div></div></div>
+        <div class="video-skeleton"><div class="skeleton-thumb"></div><div class="skeleton-info"><div class="skeleton-line"></div><div class="skeleton-line"></div></div></div>
+        <div class="video-skeleton"><div class="skeleton-thumb"></div><div class="skeleton-info"><div class="skeleton-line"></div><div class="skeleton-line"></div></div></div>
+        <div class="video-skeleton"><div class="skeleton-thumb"></div><div class="skeleton-info"><div class="skeleton-line"></div><div class="skeleton-line"></div></div></div>
+      </div>
+      <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+        <a href="https://www.youtube.com/channel/UC7iMNhxC_LV6hUlZhu3qFQw"
+           target="_blank" rel="noopener" class="btn btn-outline">
+          ▶ Voir plus sur YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== AD #2 ================== -->
+  <div class="ad-unit">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9452279158712237"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ================== THÈMES ================== -->
+  <section id="sermons">
+    <div class="container reveal">
+      <div class="section-header">
+        <span class="section-label">✦ Contenu Spirituel</span>
+        <h2 class="section-title">Nos Thèmes</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="sermons-grid">
+        <div class="sermon-card">
+          <div class="sermon-icon">🙏</div>
+          <div class="sermon-title">Prière & Intercession</div>
+          <div class="sermon-desc">Sessions de prière intense, intercession pour les nations et les familles. Rencontrez Dieu dans la chambre haute.</div>
+        </div>
+        <div class="sermon-card">
+          <div class="sermon-icon">📖</div>
+          <div class="sermon-title">Enseignements Bibliques</div>
+          <div class="sermon-desc">Études approfondies des Écritures, révélations de la Parole de Dieu pour votre croissance spirituelle quotidienne.</div>
+        </div>
+        <div class="sermon-card">
+          <div class="sermon-icon">✨</div>
+          <div class="sermon-title">Prophétie & Révélation</div>
+          <div class="sermon-desc">Paroles prophétiques, visions et révélations pour les individus, les Églises et les nations.</div>
+        </div>
+        <div class="sermon-card">
+          <div class="sermon-icon">🔥</div>
+          <div class="sermon-title">Délivrance & Guérison</div>
+          <div class="sermon-desc">Prières de délivrance, onction de guérison divine pour corps, âme et esprit.</div>
+        </div>
+        <div class="sermon-card">
+          <div class="sermon-icon">👑</div>
+          <div class="sermon-title">Adoration & Louange</div>
+          <div class="sermon-desc">Moments d'adoration profonde, entrée dans Sa présence par la louange et le chant spirituel.</div>
+        </div>
+        <div class="sermon-card">
+          <div class="sermon-icon">🕊️</div>
+          <div class="sermon-title">Esprit Saint</div>
+          <div class="sermon-desc">Enseignements sur les dons de l'Esprit, la marche dans l'Esprit et la plénitude de Sa présence.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== MISSION ================== -->
+  <section id="mission">
+    <div class="container">
+      <div class="mission-inner reveal">
+        <span class="section-label">✦ Notre Vision</span>
+        <div class="mission-quote">
+          "Ma maison sera appelée une maison de prière pour tous les peuples."
+        </div>
+        <div class="mission-verse">— Ésaïe 56:7 / Matthieu 21:13</div>
+        <p style="color:var(--text-muted); margin-top:1.5rem; font-size:0.95rem; line-height:1.8;">
+          L'Autel de Prière est un ministère dédié à ramener les croyants à
+          la discipline de la prière, à l'étude sérieuse de la Parole et à
+          l'exercice des dons prophétiques. Rejoignez une communauté en feu pour Dieu.
+        </p>
+        <div style="margin-top:2rem">
+          <a href="https://www.youtube.com/channel/UC7iMNhxC_LV6hUlZhu3qFQw?sub_confirmation=1"
+             target="_blank" rel="noopener" class="btn btn-gold">
+            ✦ Rejoindre la Communauté
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== AD #3 ================== -->
+  <div class="ad-unit">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9452279158712237"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- ================== FOOTER ================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">✝ Autel de Prière</div>
+      <div class="footer-tagline">Prière · Enseignements Bibliques · Prophétie</div>
+      <ul class="footer-links">
+        <li><a href="https://www.youtube.com/channel/UC7iMNhxC_LV6hUlZhu3qFQw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="#" onclick="openPrivacy(); return false;">Politique de Confidentialité</a></li>
+        <li><a href="#" onclick="openPrivacy(); return false;">Mentions Légales</a></li>
+      </ul>
+      <div class="footer-copy">© 2025 Autel de Prière. Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <!-- ================== VIDEO MODAL ================== -->
+  <div class="modal-overlay" id="videoModal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-iframe-wrap">
+        <iframe id="modalIframe" src="" allowfullscreen
+                allow="autoplay; encrypted-media" loading="lazy"></iframe>
+      </div>
+      <div class="modal-info">
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== COOKIE BANNER ================== -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-text">
+      Nous utilisons des cookies pour personnaliser le contenu et les publicités (Google AdSense).
+      En continuant, vous acceptez notre
+      <a onclick="openPrivacy(); return false;">politique de confidentialité</a>.
+    </p>
+    <button class="cookie-btn cookie-reject" id="cookieReject">Refuser</button>
+    <button class="cookie-btn cookie-accept" id="cookieAccept">Accepter</button>
+  </div>
+
+  <!-- ================== PRIVACY MODAL ================== -->
+  <div class="privacy-modal" id="privacyModal">
+    <div class="privacy-box">
+      <h2>Politique de Confidentialité</h2>
+      <p>Dernière mise à jour : Juin 2025</p>
+      <h3>1. Collecte des données</h3>
+      <p>Ce site utilise Google AdSense pour afficher des publicités. Google peut utiliser des cookies pour personnaliser les annonces en fonction de vos visites précédentes.</p>
+      <h3>2. Google AdSense</h3>
+      <p>Google utilise des cookies DART pour afficher des annonces basées sur vos visites sur ce site et d'autres sites Internet. Vous pouvez désactiver le cookie DART sur la
+      <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--gold)">page des paramètres publicitaires de Google</a>.</p>
+      <h3>3. Vos droits</h3>
+      <ul>
+        <li>Droit d'accès à vos données personnelles</li>
+        <li>Droit de rectification et d'effacement</li>
+        <li>Droit d'opposition au traitement</li>
+      </ul>
+      <h3>4. Contact</h3>
+      <p>Pour toute question concernant vos données personnelles, contactez-nous via la chaîne YouTube Autel de Prière.</p>
+      <h3>Mentions Légales</h3>
+      <p>Ce site est édité par le ministère Autel de Prière. Hébergement : GitHub Pages (Microsoft Corporation).</p>
+      <button class="privacy-close-btn" onclick="closePrivacy()">Fermer</button>
+    </div>
+  </div>
+
+  <!-- ================== SCRIPTS ================== -->
+  <script>
+  // ===== CONFIG =====
+  const CONFIG = {
+    channelName:       "Autel de Prière",
+    channelId:         "UC7iMNhxC_LV6hUlZhu3qFQw",
+    youtubeApiKey:     "AIzaSyCD9Knszg7Kax1lWKmsYfaVGltd5GU7Arw",
+    youtubeChannelUrl: "https://www.youtube.com/channel/UC7iMNhxC_LV6hUlZhu3qFQw",
+    maxResults:        9
+  };
+
+  // ===== DATA =====
+  let allVideos = [];
+  let currentFilter = 'all';
+
+  // ===== FORMAT HELPERS =====
+  function fmtDuration(iso) {
+    if (!iso) return '';
+    const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!m) return '';
+    const h = parseInt(m[1]||0), mi = parseInt(m[2]||0), s = parseInt(m[3]||0);
+    if (h > 0) return `${h}:${String(mi).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    return `${mi}:${String(s).padStart(2,'0')}`;
+  }
+
+  function fmtViews(n) {
+    if (!n) return '0';
+    n = parseInt(n);
+    if (n >= 1e6) return (n/1e6).toFixed(1) + ' M';
+    if (n >= 1e3) return (n/1e3).toFixed(1) + ' K';
+    return n.toString();
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso), now = new Date();
+    const diff = Math.floor((now - d) / 1000);
+    if (diff < 3600) return 'Il y a ' + Math.floor(diff/60) + ' min';
+    if (diff < 86400) return 'Il y a ' + Math.floor(diff/3600) + 'h';
+    if (diff < 2592000) return 'Il y a ' + Math.floor(diff/86400) + ' j';
+    if (diff < 31536000) return 'Il y a ' + Math.floor(diff/2592000) + ' mois';
+    return 'Il y a ' + Math.floor(diff/31536000) + ' an(s)';
+  }
+
+  function guessCategory(title) {
+    const t = (title || '').toLowerCase();
+    if (/prophé|prophe|vision|révéla|oracle/.test(t)) return 'prophetie';
+    if (/prière|priere|intercession|jeûne|jeune|veille/.test(t)) return 'priere';
+    return 'enseignement';
+  }
+
+  // ===== RENDER VIDEOS =====
+  function renderVideos(videos) {
+    const grid = document.getElementById('videosGrid');
+    const filtered = currentFilter === 'all'
+      ? videos
+      : videos.filter(v => v.category === currentFilter);
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:3rem;">
+        Aucune vidéo dans cette catégorie pour le moment.</div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(v => `
+      <div class="video-card" onclick="openModal('${v.id}', ${JSON.stringify(v.title).replace(/'/g,"&#39;")}, '${v.views}', '${v.date}')">
+        <div class="video-thumb">
+          <img src="${v.thumb}" alt="${v.title}" loading="lazy"
+               onerror="this.src='https://i.ytimg.com/vi/${v.id}/mqdefault.jpg'">
+          <div class="video-play-btn"><div class="play-circle">▶</div></div>
+          ${v.duration ? `<div class="video-duration">${v.duration}</div>` : ''}
+          <div class="video-category-badge cat-${v.category}">${v.category}</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">${v.title}</div>
+          <div class="video-meta">
+            <span>👁 ${fmtViews(v.views)} vues</span>
+            <span>${fmtDate(v.date)}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    document.getElementById('loadMoreWrap').style.display = 'block';
+  }
+
+  // ===== FETCH YOUTUBE =====
+  async function fetchYouTubeVideos() {
+    try {
+      const base = 'https://www.googleapis.com/youtube/v3';
+      const key  = CONFIG.youtubeApiKey;
+      const cid  = CONFIG.channelId;
+
+      // 1. Search — latest videos
+      const searchRes = await fetch(
+        `${base}/search?part=snippet&channelId=${cid}&type=video&order=date&maxResults=${CONFIG.maxResults}&key=${key}`
+      );
+      if (!searchRes.ok) throw new Error('Search API error: ' + searchRes.status);
+      const searchData = await searchRes.json();
+      if (!searchData.items || searchData.items.length === 0) throw new Error('No videos found');
+
+      const videoIds = searchData.items.map(i => i.id.videoId).join(',');
+
+      // 2. Video details — stats + duration
+      const vidRes = await fetch(
+        `${base}/videos?part=statistics,contentDetails&id=${videoIds}&key=${key}`
+      );
+      if (!vidRes.ok) throw new Error('Videos API error: ' + vidRes.status);
+      const vidData = await vidRes.json();
+      const statsMap = {};
+      (vidData.items || []).forEach(v => {
+        statsMap[v.id] = {
+          views: v.statistics?.viewCount || '0',
+          duration: fmtDuration(v.contentDetails?.duration)
+        };
+      });
+
+      // 3. Channel stats
+      const chanRes = await fetch(
+        `${base}/channels?part=statistics&id=${cid}&key=${key}`
+      );
+      if (!chanRes.ok) throw new Error('Channels API error: ' + chanRes.status);
+      const chanData = await chanRes.json();
+      const stats = chanData.items?.[0]?.statistics;
+      if (stats) {
+        document.getElementById('statSubs').textContent   = fmtViews(stats.subscriberCount);
+        document.getElementById('statVids').textContent   = fmtViews(stats.videoCount);
+        document.getElementById('statViews').textContent  = fmtViews(stats.viewCount);
+      }
+
+      // Build video objects
+      allVideos = searchData.items.map(item => {
+        const id    = item.id.videoId;
+        const snip  = item.snippet;
+        const extra = statsMap[id] || {};
+        return {
+          id,
+          title:    snip.title,
+          thumb:    snip.thumbnails?.high?.url || snip.thumbnails?.medium?.url || '',
+          date:     snip.publishedAt,
+          views:    extra.views || '0',
+          duration: extra.duration || '',
+          category: guessCategory(snip.title)
+        };
+      });
+
+      renderVideos(allVideos);
+
+    } catch (err) {
+      console.warn('YouTube API error:', err.message);
+      // Fallback: show a message with link to channel
+      const grid = document.getElementById('videosGrid');
+      grid.innerHTML = `
+        <div style="grid-column:1/-1; text-align:center; padding:3rem;">
+          <div style="font-size:2.5rem; margin-bottom:1rem;">✝</div>
+          <p style="color:var(--text-muted); margin-bottom:1.5rem;">
+            Impossible de charger les vidéos automatiquement.<br>
+            Visitez notre chaîne YouTube pour voir toutes nos vidéos.
+          </p>
+          <a href="${CONFIG.youtubeChannelUrl}" target="_blank" rel="noopener" class="btn btn-gold">
+            ▶ Voir nos vidéos sur YouTube
+          </a>
+        </div>`;
+      document.getElementById('statSubs').textContent  = '—';
+      document.getElementById('statVids').textContent  = '—';
+      document.getElementById('statViews').textContent = '—';
+    }
+  }
+
+  // ===== MODAL =====
+  function openModal(videoId, title, views, date) {
+    const modal  = document.getElementById('videoModal');
+    const iframe = document.getElementById('modalIframe');
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalMeta').textContent  =
+      `${fmtViews(views)} vues · ${fmtDate(date)}`;
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('videoModal');
+    document.getElementById('modalIframe').src = '';
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('videoModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ===== FILTER TABS =====
+  document.getElementById('filterTabs').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.cat;
+    renderVideos(allVideos);
+  });
+
+  // ===== NAV HAMBURGER =====
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // ===== SCROLL REVEAL =====
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ===== PARTICLES =====
+  (function initParticles() {
+    const canvas = document.getElementById('particles');
+    const ctx    = canvas.getContext('2d');
+    let W, H, pts;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function make() {
+      pts = Array.from({length: 55}, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.3,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: -Math.random() * 0.4 - 0.1,
+        a: Math.random()
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      pts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212,175,55,${p.a * 0.5})`;
+        ctx.fill();
+        p.x += p.dx; p.y += p.dy; p.a -= 0.003;
+        if (p.a <= 0 || p.y < -5) {
+          p.x = Math.random() * W;
+          p.y = H + 5;
+          p.a = Math.random() * 0.8 + 0.2;
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+
+    resize(); make(); draw();
+    window.addEventListener('resize', () => { resize(); make(); });
+  })();
+
+  // ===== COOKIE BANNER =====
+  function openPrivacy()  { document.getElementById('privacyModal').classList.add('open'); }
+  function closePrivacy() { document.getElementById('privacyModal').classList.remove('open'); }
+
+  (function initCookies() {
+    if (localStorage.getItem('cookieConsent')) {
+      document.getElementById('cookieBanner').classList.add('hidden');
+      return;
+    }
+    document.getElementById('cookieAccept').addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      document.getElementById('cookieBanner').classList.add('hidden');
+    });
+    document.getElementById('cookieReject').addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'rejected');
+      document.getElementById('cookieBanner').classList.add('hidden');
+    });
+  })();
+
+  // Close privacy modal on outside click
+  document.getElementById('privacyModal').addEventListener('click', function(e) {
+    if (e.target === this) closePrivacy();
+  });
+
+  // ===== INIT =====
+  document.addEventListener('DOMContentLoaded', () => {
+    fetchYouTubeVideos();
+  });
+  </script>
+</body>
+</html>
